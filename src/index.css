@@ -1,0 +1,268 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Rajdhani:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* CodeBattle Arena - Cyber Gaming Theme */
+    --background: 230 25% 5%;
+    --foreground: 210 40% 98%;
+
+    --card: 230 25% 8%;
+    --card-foreground: 210 40% 98%;
+
+    --popover: 230 25% 10%;
+    --popover-foreground: 210 40% 98%;
+
+    /* Neon Cyan Primary */
+    --primary: 180 100% 50%;
+    --primary-foreground: 230 25% 5%;
+
+    /* Deep Purple Secondary */
+    --secondary: 270 80% 60%;
+    --secondary-foreground: 210 40% 98%;
+
+    --muted: 230 20% 15%;
+    --muted-foreground: 215 20% 55%;
+
+    /* Electric Purple Accent */
+    --accent: 280 100% 65%;
+    --accent-foreground: 210 40% 98%;
+
+    /* Neon Red Destructive */
+    --destructive: 0 100% 55%;
+    --destructive-foreground: 210 40% 98%;
+
+    /* Success Green */
+    --success: 150 100% 45%;
+    --success-foreground: 230 25% 5%;
+
+    /* Warning Orange */
+    --warning: 35 100% 55%;
+    --warning-foreground: 230 25% 5%;
+
+    --border: 230 20% 18%;
+    --input: 230 20% 12%;
+    --ring: 180 100% 50%;
+
+    --radius: 0.75rem;
+
+    /* Custom Gaming Colors */
+    --neon-cyan: 180 100% 50%;
+    --neon-purple: 280 100% 65%;
+    --neon-pink: 330 100% 60%;
+    --neon-green: 150 100% 45%;
+    --neon-orange: 35 100% 55%;
+    --neon-blue: 220 100% 60%;
+
+    /* Glow Effects */
+    --glow-cyan: 0 0 20px hsl(180 100% 50% / 0.5), 0 0 40px hsl(180 100% 50% / 0.3), 0 0 60px hsl(180 100% 50% / 0.1);
+    --glow-purple: 0 0 20px hsl(280 100% 65% / 0.5), 0 0 40px hsl(280 100% 65% / 0.3), 0 0 60px hsl(280 100% 65% / 0.1);
+    --glow-pink: 0 0 20px hsl(330 100% 60% / 0.5), 0 0 40px hsl(330 100% 60% / 0.3);
+
+    --sidebar-background: 230 25% 8%;
+    --sidebar-foreground: 210 40% 98%;
+    --sidebar-primary: 180 100% 50%;
+    --sidebar-primary-foreground: 230 25% 5%;
+    --sidebar-accent: 230 20% 15%;
+    --sidebar-accent-foreground: 210 40% 98%;
+    --sidebar-border: 230 20% 18%;
+    --sidebar-ring: 180 100% 50%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+    background-image: 
+      radial-gradient(ellipse at 20% 0%, hsl(280 100% 65% / 0.1) 0%, transparent 50%),
+      radial-gradient(ellipse at 80% 100%, hsl(180 100% 50% / 0.08) 0%, transparent 50%),
+      linear-gradient(180deg, hsl(230 25% 5%) 0%, hsl(230 25% 3%) 100%);
+    min-height: 100vh;
+  }
+
+  ::selection {
+    background: hsl(var(--primary) / 0.3);
+    color: hsl(var(--foreground));
+  }
+}
+
+@layer utilities {
+  /* Text Gradients */
+  .text-gradient-cyan {
+    @apply bg-gradient-to-r from-[hsl(180,100%,50%)] via-[hsl(200,100%,60%)] to-[hsl(180,100%,50%)] bg-clip-text text-transparent;
+  }
+
+  .text-gradient-purple {
+    @apply bg-gradient-to-r from-[hsl(280,100%,65%)] via-[hsl(320,100%,60%)] to-[hsl(280,100%,65%)] bg-clip-text text-transparent;
+  }
+
+  .text-gradient-fire {
+    @apply bg-gradient-to-r from-[hsl(35,100%,55%)] via-[hsl(0,100%,55%)] to-[hsl(330,100%,60%)] bg-clip-text text-transparent;
+  }
+
+  /* Glowing Effects */
+  .glow-cyan {
+    box-shadow: var(--glow-cyan);
+  }
+
+  .glow-purple {
+    box-shadow: var(--glow-purple);
+  }
+
+  .glow-pink {
+    box-shadow: var(--glow-pink);
+  }
+
+  .text-glow-cyan {
+    text-shadow: 0 0 10px hsl(180 100% 50% / 0.8), 0 0 20px hsl(180 100% 50% / 0.5), 0 0 30px hsl(180 100% 50% / 0.3);
+  }
+
+  .text-glow-purple {
+    text-shadow: 0 0 10px hsl(280 100% 65% / 0.8), 0 0 20px hsl(280 100% 65% / 0.5);
+  }
+
+  /* Glass Effects */
+  .glass {
+    @apply bg-card/40 backdrop-blur-xl border border-border/50;
+  }
+
+  .glass-strong {
+    @apply bg-card/60 backdrop-blur-2xl border border-border/60;
+  }
+
+  /* Grid Pattern */
+  .grid-pattern {
+    background-image: 
+      linear-gradient(hsl(var(--border) / 0.3) 1px, transparent 1px),
+      linear-gradient(90deg, hsl(var(--border) / 0.3) 1px, transparent 1px);
+    background-size: 50px 50px;
+  }
+
+  /* Scanline Effect */
+  .scanlines::before {
+    content: '';
+    @apply absolute inset-0 pointer-events-none;
+    background: repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 2px,
+      hsl(0 0% 0% / 0.03) 2px,
+      hsl(0 0% 0% / 0.03) 4px
+    );
+  }
+
+  /* Animated Border */
+  .border-glow {
+    position: relative;
+  }
+
+  .border-glow::before {
+    content: '';
+    @apply absolute -inset-[1px] rounded-[inherit] opacity-0 transition-opacity duration-300;
+    background: linear-gradient(135deg, hsl(180 100% 50%), hsl(280 100% 65%), hsl(330 100% 60%));
+    z-index: -1;
+  }
+
+  .border-glow:hover::before {
+    @apply opacity-100;
+  }
+
+  /* Cyber Corner Accents */
+  .cyber-corners {
+    position: relative;
+  }
+
+  .cyber-corners::before,
+  .cyber-corners::after {
+    content: '';
+    @apply absolute w-4 h-4 border-primary;
+  }
+
+  .cyber-corners::before {
+    @apply top-0 left-0 border-t-2 border-l-2;
+  }
+
+  .cyber-corners::after {
+    @apply bottom-0 right-0 border-b-2 border-r-2;
+  }
+}
+
+/* Animations */
+@keyframes pulse-glow {
+  0%, 100% {
+    box-shadow: 0 0 20px hsl(180 100% 50% / 0.4);
+  }
+  50% {
+    box-shadow: 0 0 40px hsl(180 100% 50% / 0.6), 0 0 60px hsl(180 100% 50% / 0.3);
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes slide-up {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes gradient-shift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+@keyframes flicker {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.8; }
+  75% { opacity: 0.9; }
+}
+
+.animate-pulse-glow {
+  animation: pulse-glow 2s ease-in-out infinite;
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+.animate-slide-up {
+  animation: slide-up 0.6s ease-out forwards;
+}
+
+.animate-gradient {
+  background-size: 200% 200%;
+  animation: gradient-shift 3s ease infinite;
+}
+
+.animate-flicker {
+  animation: flicker 0.15s infinite;
+}
