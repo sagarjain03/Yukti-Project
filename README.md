@@ -1,73 +1,124 @@
-# Welcome to your Lovable project
+Yukti
 
-## Project info
+📄 Product Requirement Document (PRD)
+Project Name
+CodeBattle Arena (CBA)
+Version
+1.0 (Draft)
+Status
+In-Planning
+Document Type
+Technical Specification & Feature Requirement
+Objective
+To gamify Data Structures & Algorithms (DSA) preparation through real-time multiplayer battles and collaborative learning tools.
 
-**URL**: https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID
 
-## How can I edit this code?
+1. Executive Summary
+CodeBattle Arena is a real-time, multiplayer competitive coding platform designed to bridge the gap between "solitary coding practice" and "high-pressure technical interviews."
+Unlike existing platforms (LeetCode, HackerRank) that focus on individual problem solving, CBA introduces a Gamified Battle Royale mechanic where users compete 1v1 or in teams (Squads) to solve random DSA problems. The platform uniquely integrates collaborative tools (Whiteboard, Video/Audio) directly into the battle environment to facilitate post-match analysis and peer-to-peer learning.
 
-There are several ways of editing your application.
+2. Target Audience
+Computer Science Students: Preparing for campus placements and seeking a fun way to practice.
+Job Seekers: Professionals looking to brush up on DSA under simulated time pressure.
+Coding Bootcamps/Clubs: Organizations running internal hackathons or practice sessions.
 
-**Use Lovable**
+3. Core Features & Functional Requirements
+3.1. The Battle System (Gameplay)
+Matchmaking Modes:
+1v1 Duel: Automated matchmaking based on Elo Rating (Beginner vs Beginner, Pro vs Pro).
+Squad Wars: Users can form a lobby of up to 5 friends and compete against another team or against each other.
+Battle Royale: 10+ users enter; the first to solve the problem wins.
+Problem Assignment:
+System fetches a random DSA problem from the database based on the selected difficulty (Easy, Medium, Hard).
+Both/All sides receive the exact same problem at the exact same time.
+Real-Time Scoring Logic:
+Correctness (60%): Number of test cases passed.
+Time Efficiency (20%): How fast the solution was submitted relative to the time limit.
+Code Optimization (20%): Memory usage and Execution time (judged by the compiler).
+3.2. Integrated Development Environment (The Arena)
+Code Editor: Monaco Editor integration (VS Code like experience) with syntax highlighting and intelligent code completion.
+Language Support: C++, Java, Python, JavaScript.
+Blind Mode (Optional): Users can see an opponent's progress bar (percentage of test cases passed) but not their code, creating competitive pressure.
+3.3. Collaborative Suite (The USP)
+Interactive Whiteboard:
+A "Scribble-like" canvas available post-match (or during team rounds).
+Feature: Users can drag-and-drop code snippets onto the canvas to draw logic flows (e.g., drawing pointers for a Linked List).
+Integrated Communication:
+Video/Audio: Embedded WebRTC video bubbles for players in the room. No external Zoom/Discord required.
+Live Chat: Text-based chat with markdown support for code sharing.
+3.4. Engagement & "Viral" Features
+College Wars:
+Leaderboards aggregating scores by University/College domains (e.g., IIT Delhi vs. NIT Trichy).
+Requires email domain verification (.edu or .ac.in).
+The "Replay" System:
+Records every keystroke of the coding session.
+Users can watch a "Time-Travel" replay of the winner’s code to understand their thought process (e.g., "Did they write the helper function first?").
+AI Referee & Analysis:
+Post-game breakdown using LLMs (Large Language Models).
+Example Output: "Player A won because they used a HashMap (O(1)), while Player B used a nested loop (O(n^2))."
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and start prompting.
+4. Technical Architecture
+4.1. Tech Stack
+Component
+Technology
+Justification
+Frontend
+Next.js (React) + Tailwind CSS
+Server-Side Rendering (SSR) for speed; high performance UI.
+State Management
+Zustand
+Managing complex game states (scores, timer, player status).
+Backend API
+Node.js + Express (TypeScript)
+Event-driven architecture suitable for real-time apps.
+Real-Time Engine
+Socket.io
+Low-latency bi-directional communication for game synchronization.
+Video/Audio
+LiveKit or PeerJS (WebRTC)
+Scalable, open-source video infrastructure.
+Code Execution
+Judge0 (Dockerized)
+Secure, sandboxed remote code execution API.
+Database
+MongoDB (Data) + Redis (Cache)
+MongoDB for flexible user data; Redis for live leaderboards and fast session storage.
 
-Changes made via Lovable will be committed automatically to this repo.
+4.2. Security Constraints
+Sandboxing: All user-submitted code must run in isolated Docker containers (via Judge0) to prevent server-side attacks (e.g., infinite loops, file system access).
+Rate Limiting: Prevent abuse of the compiler API.
+Anti-Cheat: Detect copy-pasting from external sources (basic focus/blur detection).
 
-**Use your preferred IDE**
+5. UI/UX Workflow
+Onboarding: User Login (GitHub/Google) -> Profile Setup (College Name, Avatar).
+Lobby: Select Mode (1v1 / Squad) -> Invite Friends (Copy Link) -> Start Search.
+The Battle:
+Split Screen: Problem on Left, Editor on Center, Opponent Status on Right.
+Top Bar: Timer & Live Score.
+Post-Match (The Cool Down):
+Winner Announcement.
+"Discuss" Button: Opens the Shared Whiteboard and maximizes Video Call.
+"Replay" Button: Watch the code construction.
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+6. Development Roadmap (Phased Approach)
+Phase 1: MVP (Minimum Viable Product)
+User Authentication.
+1v1 Matchmaking (Random).
+Basic Code Editor + Compiler (Judge0).
+Simple Winner declaration based on Test Cases.
+Phase 2: Collaboration & Real-Time
+Integration of Socket.io for live opponent progress bars.
+Addition of Video/Audio calling (WebRTC).
+Implementation of the Whiteboard canvas.
+Phase 3: Gamification & Social
+College Wars Leaderboard.
+Replay System (recording keystrokes).
+Elo Rating System implementation.
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+7. Success Metrics (KPIs)
+DAU (Daily Active Users): Number of unique players battling.
+Retention Rate: Percentage of users returning after their first battle.
+Average Session Time: High session time indicates successful engagement via the "Discuss/Whiteboard" feature.
 
-Follow these steps:
 
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
-
-# Step 3: Install the necessary dependencies.
-npm i
-
-# Step 4: Start the development server with auto-reloading and an instant preview.
-npm run dev
-```
-
-**Edit a file directly in GitHub**
-
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
-
-**Use GitHub Codespaces**
-
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
-
-## What technologies are used for this project?
-
-This project is built with:
-
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
-
-## How can I deploy this project?
-
-Simply open [Lovable](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and click on Share -> Publish.
-
-## Can I connect a custom domain to my Lovable project?
-
-Yes, you can!
-
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
-
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/features/custom-domain#custom-domain)
